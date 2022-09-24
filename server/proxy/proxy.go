@@ -2,7 +2,6 @@ package proxy
 
 import (
 	"github.com/AllenShaw19/bookkeeper/server"
-	"github.com/AllenShaw19/bookkeeper/server/config"
 )
 
 type DLogProxy struct {
@@ -11,7 +10,7 @@ type DLogProxy struct {
 	dLogRpcService server.DLogRpcService
 }
 
-func New(conf *config.DlogConfig) *DLogProxy {
+func New(conf *server.DLogConfig) *DLogProxy {
 	p := &DLogProxy{}
 	return p
 }

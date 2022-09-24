@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/AllenShaw19/bookkeeper/server/config"
+	"github.com/AllenShaw19/bookkeeper/server"
 	"github.com/AllenShaw19/bookkeeper/server/proxy"
 )
 
@@ -12,11 +12,11 @@ func main() {
 	bootstrapDLog(conf)
 }
 
-func parseConf() *config.DlogConfig {
+func parseConf() *server.DLogConfig {
 	return nil
 }
 
-func bootstrapDLog(conf *config.DlogConfig) {
+func bootstrapDLog(conf *server.DLogConfig) {
 	// start dLogProxy
 	dlogProxy := proxy.New(conf)
 	dlogProxy.Startup()
