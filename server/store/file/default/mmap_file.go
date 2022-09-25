@@ -17,10 +17,10 @@ var (
 )
 
 type MmapFile struct {
-	startPos       atomic.Int64
-	wrotePos       atomic.Int64
-	committedPos   atomic.Int64
-	flushedPos     atomic.Int64
+	startPos       atomic.Int32
+	wrotePos       atomic.Int32
+	committedPos   atomic.Int32
+	flushedPos     atomic.Int32
 	file           *os.File
 	fileSize       int
 	fileFromOffset int64
@@ -59,4 +59,11 @@ func NewMmapFile(fileName string, fileSize int) (*MmapFile, error) {
 	ok = true
 
 	return mf, nil
+}
+
+func (f *MmapFile) AppendMessage(data []byte, offset, length int) bool {
+	currPos := int(f.wrotePos.Load())
+
+	if currPos+length <= f.fileSize {
+	}
 }
